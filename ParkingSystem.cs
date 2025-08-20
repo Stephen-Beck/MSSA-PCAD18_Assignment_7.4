@@ -2,15 +2,23 @@
 {
     public class ParkingSystem
     {
-        public int SmallSpaces { get; set; }
-        public int MediumSpaces { get; set; }
-        public int LargeSpaces { get; set; }
+        private int SmallSpaces { get; }
+        private int MediumSpaces { get; }
+        private int LargeSpaces { get; }
+
+        private int SmallCount { get; set; }
+        private int MediumCount { get; set; }
+        private int LargeCount { get; set; }
 
         public ParkingSystem(int large, int medium, int small)
         {
             SmallSpaces = small;
             MediumSpaces = medium;
             LargeSpaces = large;
+
+            SmallCount = small;
+            MediumCount = medium;
+            LargeCount = large;
         }
 
         public bool AddCar(int carType)
@@ -18,23 +26,24 @@
             switch (carType)
             {
                 case 1:
-                    if (SmallSpaces > 0)
+                    if (LargeCount > 0)
                     {
-                        SmallSpaces--;
+                        LargeCount--;
                         return true;
                     }
                     else return false;
+
                 case 2:
-                    if (MediumSpaces > 0)
+                    if (MediumCount > 0)
                     {
-                        MediumSpaces--;
+                        MediumCount--;
                         return true;
                     }
                     else return false;
                 case 3:
-                    if (LargeSpaces > 0)
+                    if (SmallCount > 0)
                     {
-                        LargeSpaces--;
+                        SmallCount--;
                         return true;
                     }
                     else return false;
